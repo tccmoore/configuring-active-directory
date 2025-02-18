@@ -33,7 +33,7 @@ Under the "Name and Operating Systems" tab:
 - For "ISO Image", select the Windows Server 2019 ISO from the location that you downloaded the file to. This should automatically populate the other fields.
 - Before you move on, be sure to check "Skip unattended installation". This allows you to manually handle and customize the installation process.
 
-Under the "Hardware Tab":
+Under the "Hardware" Tab:
 - This is where you configure the host machine's resources that can be allocated to the virtual machine. What you can allocate will heavily depend on your own machine, but I've had success with a rather minimal setup. Keep in mind that you'll need to be able to
   run **two** Virtual Machines consecutively by the end of this lab. If you have a low-performing setup, then you should use minimal resources. 
 - For Base Memory, you'll want at least 2048 MB (Roughly 2 GB). I used 4 GB for a smoother experience. 
