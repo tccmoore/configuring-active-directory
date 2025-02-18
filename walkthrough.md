@@ -25,6 +25,7 @@ All of this is achieved in a cost-free, virtualized environment using minimal re
 
 # Part 2: Setting up the Virtual Machine
 - Once you have VirtualBox installed and the ISOs downloaded, you'll need to open VirtualBox and click "New" at the top of the Window to begin creating a new VM. You'll be greeted with the following Window:
+
 ![image](https://github.com/user-attachments/assets/802afc38-7ecb-491e-896b-3d8a8fb15c37)
 
 Under the "Name and Operating Systems" tab:
@@ -43,6 +44,26 @@ Under the "Hard Disk" Tab:
 - VirtualBox uses dynamically-allocated storage by default, so it can be assigned more space as needed.
 
 Once you have everything configured, click on "Finish" on the bottom right corner. A Virtual Machine named "DC" will now appear on the left side of the screen. Right-click it and select "Settings":
+
 ![image](https://github.com/user-attachments/assets/04226e1c-f94f-4ea7-9abc-4d6b2c7a6970)
+
+For the purposes of this lab, we'll use two separate network adapters: The first will be used to connect directly to the internet using the host machine's network adapter, and the second will be used for the internal network to connect to the domain controller. The client machine
+will still be able to connect to the internet, but **only** through the domain controller. It's just like any school or corporate network. That being said, click on the "Network" tab:
+
+Under "Adapter 1":
+- Select Attached To -> Bridged Adapter. This allows the Virtual Machine to directly access your host machine's physical network adapter, and additionally gives the Domain Controller a distinguished IP address on the local network. 
+- Under Name, select the name of your host machine's network adapter. If you have trouble finding it, check "Control Panel\Network and Internet\Network Connections" on your host machine (Assuming that you're using Windows) and identify the device connected to your Wireless Network. 
+- Select Promiscuous Mode -> Allow All. This allows the Network Interface Card to receive packets intended for multiple different devices, which is necessary for this setup due to a bridged network essentially adding a second physical machine to a single NIC.
+
+Under "Adapter 2":
+- Select Attached To -> Internal Network. The client machines will use this adapter, which restricts them to the local network. They will only be able to access external networks through the domain controller, which functions as a gatekeeper for traffic.
+- For name, use "intnet" (Short for itnernal network). 
+- Use the default adapter type, and keep Promiscuous Mode on "Deny". 
+
+Once the network configuration is finished, you're ready to run the Virtual Machine and install the Operating System. Close the Settings window and double click the VM to run it. You'll find a familiar screen: 
+
+![image](https://github.com/user-attachments/assets/47bce0ad-2e15-42ed-b940-a0a7ddc1c119)
+
+
 
 
